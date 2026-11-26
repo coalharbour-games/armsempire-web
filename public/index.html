@@ -1,81 +1,238 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Arms Empire: Profit of War — Coming Soon</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Share+Tech+Mono&family=Barlow:wght@300;400;600&display=swap" rel="stylesheet" />
-  <style>
-    :root {
-      --bg:      #0a0a08;
-      --surface: #111210;
-      --border:  #2a2a24;
-      --accent:  #c8a84b;
-      --text:    #d4d0c4;
-      --muted:   #6a6860;
-      --glow:    rgba(200,168,75,0.12);
-    }
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html, body { height: 100%; background: var(--bg); color: var(--text); font-family: 'Barlow', sans-serif; overflow-x: hidden; }
-    body::before {
-      content: ''; position: fixed; inset: 0;
-      background-image: linear-gradient(rgba(200,168,75,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(200,168,75,0.03) 1px, transparent 1px);
-      background-size: 48px 48px; pointer-events: none; z-index: 0;
-    }
-    body::after {
-      content: ''; position: fixed; inset: 0;
-      background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.12) 2px, rgba(0,0,0,0.12) 4px);
-      pointer-events: none; z-index: 0;
-    }
-    .corner { position: fixed; width: 36px; height: 36px; z-index: 10; opacity: 0.35; }
-    .corner--tl { top:20px; left:20px;   border-top:1px solid var(--accent); border-left:1px solid var(--accent); }
-    .corner--tr { top:20px; right:20px;  border-top:1px solid var(--accent); border-right:1px solid var(--accent); }
-    .corner--bl { bottom:20px; left:20px;  border-bottom:1px solid var(--accent); border-left:1px solid var(--accent); }
-    .corner--br { bottom:20px; right:20px; border-bottom:1px solid var(--accent); border-right:1px solid var(--accent); }
-    .page { position: relative; z-index: 1; min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 60px 24px 80px; }
-    .label { font-family: 'Share Tech Mono', monospace; font-size: 11px; letter-spacing: 0.25em; color: var(--muted); text-transform: uppercase; margin-bottom: 24px; animation: fadeUp 1s ease both; }
-    .logo-img { width: clamp(200px, 40vw, 380px); height: auto; filter: drop-shadow(0 0 40px rgba(200,168,75,0.25)) drop-shadow(0 0 80px rgba(200,100,30,0.15)); animation: fadeUp 1s 0.2s ease both; margin-bottom: 8px; }
-    .divider { width: 100%; max-width: 440px; height: 1px; background: linear-gradient(90deg, transparent, var(--accent), transparent); margin: 28px auto; animation: fadeUp 1s 0.35s ease both; }
-    .tagline { font-size: clamp(13px, 2vw, 15px); font-weight: 300; letter-spacing: 0.06em; color: var(--muted); text-align: center; max-width: 460px; line-height: 1.8; margin-bottom: 40px; animation: fadeUp 1s 0.45s ease both; }
-    .badge { display: inline-flex; align-items: center; gap: 10px; border: 1px solid var(--border); background: var(--surface); padding: 9px 22px; font-family: 'Share Tech Mono', monospace; font-size: 11px; letter-spacing: 0.22em; color: var(--accent); text-transform: uppercase; margin-bottom: 48px; animation: fadeUp 1s 0.55s ease both; position: relative; overflow: hidden; }
-    .badge::before { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, transparent, var(--glow), transparent); transform: translateX(-100%); animation: shimmer 3s 2s infinite; }
-    .badge-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); animation: pulse 2s infinite; flex-shrink: 0; }
-    .socials { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; animation: fadeUp 1s 0.7s ease both; }
-    .social-link { display: inline-flex; align-items: center; gap: 7px; padding: 7px 14px; border: 1px solid var(--border); color: var(--muted); text-decoration: none; font-family: 'Share Tech Mono', monospace; font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; transition: color 0.2s, border-color 0.2s, background 0.2s; }
-    .social-link:hover { color: var(--accent); border-color: var(--accent); background: var(--glow); }
-    .footer { position: fixed; bottom: 22px; left: 50%; transform: translateX(-50%); font-family: 'Share Tech Mono', monospace; font-size: 10px; letter-spacing: 0.18em; color: var(--muted); opacity: 0.4; white-space: nowrap; z-index: 10; }
-    @keyframes fadeUp { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
-    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.25; } }
-    @keyframes shimmer { 0% { transform: translateX(-100%); } 100% { transform: translateX(200%); } }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Arms Empire: Profit of War</title>
+<meta name="description" content="Build an arms corporation from one small ammunition factory. Design weapons, win government contracts, lobby the powerful, and read about it in tomorrow's paper.">
+<link rel="canonical" href="https://armsempiregame.com/">
+<meta name="theme-color" content="#0C0B0A">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Arms Empire: Profit of War">
+<meta property="og:title" content="Arms Empire: Profit of War">
+<meta property="og:description" content="You don't fight wars. You supply them. A tycoon strategy game by Coal Harbour Games.">
+<meta property="og:url" content="https://armsempiregame.com/">
+<meta property="og:image" content="https://armsempiregame.com/assets/img/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Arms Empire: Profit of War logo">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preload" href="/assets/fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/inter-tight-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/style.css">
 </head>
-<body>
-  <div class="corner corner--tl"></div>
-  <div class="corner corner--tr"></div>
-  <div class="corner corner--bl"></div>
-  <div class="corner corner--br"></div>
-  <main class="page">
-    <p class="label">// Auxiliarus — Game Development</p>
-    <img class="logo-img" src="arms-empire-logo.png" alt="Arms Empire: Profit of War" />
-    <div class="divider"></div>
-    <p class="tagline">
-      Build a global arms corporation. Supply nations, exploit conflicts,<br>
-      and watch the world change based on your deals.
-    </p>
-    <div class="badge">
-      <span class="badge-dot"></span>
-      In Development — Coming Soon
+<body data-page="home">
+<svg class="sr-only" aria-hidden="true" focusable="false"><symbol id="i-discord" viewBox="0 0 24 24"><path fill="currentColor" d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.946 2.4189-2.1568 2.4189Z"/></symbol><symbol id="i-steam" viewBox="0 0 24 24"><path fill="currentColor" d="M11.979 0C5.678 0 .511 4.86.022 11.037l6.432 2.658c.545-.371 1.203-.59 1.912-.59.063 0 .125.004.188.006l2.861-4.142V8.91c0-2.495 2.028-4.524 4.524-4.524 2.494 0 4.524 2.031 4.524 4.527s-2.03 4.525-4.524 4.525h-.105l-4.076 2.911c0 .052.004.105.004.159 0 1.875-1.515 3.396-3.39 3.396-1.635 0-3.016-1.173-3.331-2.727L.436 15.27C1.862 20.307 6.486 24 11.979 24c6.627 0 11.999-5.373 11.999-12S18.605 0 11.979 0zM7.54 18.21l-1.473-.61c.262.543.714.999 1.314 1.25 1.297.539 2.793-.076 3.332-1.375.263-.63.264-1.319.005-1.949s-.75-1.121-1.377-1.383c-.624-.26-1.29-.249-1.878-.03l1.523.63c.956.4 1.409 1.5 1.009 2.455-.397.957-1.497 1.41-2.454 1.012H7.54zm11.415-9.303c0-1.662-1.353-3.015-3.015-3.015-1.665 0-3.015 1.353-3.015 3.015 0 1.665 1.35 3.015 3.015 3.015 1.663 0 3.015-1.35 3.015-3.015zm-5.273-.005c0-1.252 1.013-2.266 2.265-2.266 1.249 0 2.266 1.014 2.266 2.266 0 1.251-1.017 2.265-2.266 2.265-1.253 0-2.265-1.014-2.265-2.265z"/></symbol><symbol id="i-play" viewBox="0 0 12 14"><path fill="currentColor" d="M0 0L12 7L0 14Z"/></symbol></svg>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="hero">
+  <img class="hero__img" src="/assets/img/hero-general.jpg" alt="The general, a valued customer" width="925" height="1080">
+  <div class="hero__shade" aria-hidden="true"></div>
+  <div class="hero__inner wrap">
+    <nav class="nav" aria-label="Main">
+      <div class="nav__links">
+        <a href="/#game" data-nav="game">The Game</a>
+        <a href="/#pictures" data-nav="pictures">Screenshots</a>
+        <a href="/#business" data-nav="business">Features</a>
+        <a href="/#world" data-nav="world">World</a>
+        <a href="/#studio" data-nav="studio">Studio</a>
+      </div>
+      <div class="nav__side">
+        <a class="nav__text" href="#" hidden>Press kit</a>
+        <a class="icon-btn" href="https://discord.gg/JwE9DXx87T" aria-label="Discord"><svg aria-hidden="true" width="20" height="20"><use href="#i-discord"/></svg></a>
+        <a class="icon-btn" href="#" aria-label="Steam" hidden><svg aria-hidden="true" width="20" height="20"><use href="#i-steam"/></svg></a>
+      </div>
+    </nav>
+    <div class="hero__body" id="game">
+      <div class="m hero__meta"><span>A Coal Harbour Games production</span><span aria-hidden="true">/</span><span>Windows · macOS · Linux</span><span aria-hidden="true">/</span><span>Coming to Steam</span></div>
+      <img class="hero__logo" src="/assets/img/logo.webp" alt="Arms Empire: Profit of War" width="680" height="413">
+      <h1 class="d hero__title">You don't fight wars.<br><span class="accent">You supply them.</span></h1>
+      <p class="hero__text">Build an arms corporation from one small ammunition factory. Design weapons, win government contracts, lobby the powerful, and read about it in tomorrow's paper.</p>
+      <div class="hero__cta">
+        <a class="btn btn--accent" href="#" hidden><svg aria-hidden="true" width="20" height="20"><use href="#i-steam"/></svg> Wishlist on Steam</a>
+        <a class="btn btn--outline" href="https://discord.gg/JwE9DXx87T"><svg aria-hidden="true" width="20" height="20"><use href="#i-discord"/></svg> Join the Discord</a>
+      </div>
+      <a class="play-link" href="#" hidden><span class="play-link__icon"><svg aria-hidden="true" width="12" height="14"><use href="#i-play"/></svg></span>Watch the trailer</a>
     </div>
-    <div class="socials">
-      <a class="social-link" href="https://x.com/ArmsEmpireGame" target="_blank">𝕏 &nbsp;Twitter / X</a>
-      <a class="social-link" href="https://www.instagram.com/armsempire/" target="_blank">IG &nbsp;Instagram</a>
-      <a class="social-link" href="https://bsky.app/profile/armsempire.bsky.social" target="_blank">☁ &nbsp;Bluesky</a>
-      <a class="social-link" href="https://www.youtube.com/channel/UCu4IndwXBjUkiCHU9SibaEw" target="_blank">▶ &nbsp;YouTube</a>
-      <a class="social-link" href="https://www.linkedin.com/company/arms-empire-game" target="_blank">in &nbsp;LinkedIn</a>
+  </div>
+  <div class="facts">
+    <div class="wrap facts__row">
+      <div class="fact"><div class="m fact__label">Genre</div><div class="d fact__value">Tycoon strategy</div></div>
+      <div class="fact"><div class="m fact__label">World</div><div class="d fact__value">Generated every game</div></div>
+      <div class="fact"><div class="m fact__label">Platform</div><div class="d fact__value">Windows · macOS · Linux</div></div>
+      <div class="fact"><div><div class="m fact__label">Status</div><div class="d fact__value accent">In development</div></div><div class="m fact__note">Fig. 1<br>Valued customer.<br>Pays in cash.</div></div>
     </div>
-  </main>
-  <footer class="footer">© 2025 Auxiliarus s.r.o. — armsempiregame.com</footer>
+  </div>
+</header>
+
+<main id="main">
+
+<section class="sec pictures wrap" id="pictures" aria-labelledby="pictures-title">
+  <div class="sec-head">
+    <div><div class="m sec-label">In pictures</div><h2 class="d h-xl" id="pictures-title">Inside the <span class="accent">company.</span></h2></div>
+    <p class="lead">Factories, blueprints, contracts and ministers.<span hidden> Ninety seconds of shareholder value.</span></p>
+  </div>
+  <a class="trailer" href="#" hidden>
+    <img src="/assets/img/trailer-poster.jpg" alt="" width="1920" height="1080" loading="lazy">
+    <span class="trailer__shade" aria-hidden="true"></span>
+    <span class="trailer__play" aria-hidden="true"><svg width="34" height="40" style="margin-left:8px;color:#FFFFFF"><use href="#i-play"/></svg></span>
+    <span class="trailer__caption"><span class="m">Announcement trailer</span><span class="d">Watch the trailer</span></span>
+  </a>
+  <div class="shots">
+    <figure class="shot"><img src="/assets/img/shot-city.jpg" alt="City view with the first factory" width="1920" height="1080" loading="lazy"><figcaption class="m">A / One small factory</figcaption></figure>
+    <figure class="shot"><img src="/assets/img/shot-design.jpg" alt="Product design window" width="1920" height="1080" loading="lazy"><figcaption class="m">B / Product design</figcaption></figure>
+    <figure class="shot"><img src="/assets/img/shot-contracts.jpg" alt="Contracts window" width="1920" height="1080" loading="lazy"><figcaption class="m">C / Supply contracts</figcaption></figure>
+    <figure class="shot"><img src="/assets/img/shot-offer.jpg" alt="A client's contract offer" width="1920" height="1080" loading="lazy"><figcaption class="m">D / A client calls</figcaption></figure>
+  </div>
+</section>
+
+<section class="sec business" id="business" aria-labelledby="business-title">
+  <div class="wrap">
+    <div class="m sec-label">Operations</div>
+    <h2 class="d h-xl" id="business-title">How the business works</h2>
+    <div class="cards">
+      <article class="card">
+        <div class="crop"><img src="/assets/img/shot-design.jpg" alt="Weapon blueprint in the product design window" style="transform:scale(1.9);transform-origin:37% 38%" loading="lazy"></div>
+        <div class="card__body"><div class="card__title"><span class="d card__num">01</span><h3 class="d">Design</h3></div><p>Research unlocks parts, not finished weapons. Pick the frame, barrel, action, caliber and feed. The blueprint and the unit cost update as you build.</p></div>
+      </article>
+      <article class="card">
+        <div class="crop"><img src="/assets/img/shot-contracts.jpg" alt="Supply contracts table" style="transform:scale(1.7);transform-origin:66% 36%" loading="lazy"></div>
+        <div class="card__body"><div class="card__title"><span class="d card__num">02</span><h3 class="d">Supply</h3></div><p>You don’t own the mines. Buy coal, iron ore, copper and sulfur from companies on the map, and hope the border stays open.</p></div>
+      </article>
+      <article class="card">
+        <div class="crop"><img src="/assets/img/shot-city.jpg" alt="A factory in the city" style="transform:scale(1.55);transform-origin:50% 44%" loading="lazy"></div>
+        <div class="card__body"><div class="card__title"><span class="d card__num">03</span><h3 class="d">Produce</h3></div><p>Build factories near raw materials or near your buyers. Expand into research centers and testing grounds. An idle factory burns cash.</p></div>
+      </article>
+      <article class="card">
+        <div class="crop"><img src="/assets/img/shot-offer.jpg" alt="A typed contract offer" style="transform:scale(1.55);transform-origin:22% 52%" loading="lazy"></div>
+        <div class="card__body"><div class="card__title"><span class="d card__num">04</span><h3 class="d">Sell</h3></div><p>Democracies, monarchies and military juntas send offers. Win tenders against rival corporations, or take the deal nobody else will.</p></div>
+      </article>
+      <article class="card">
+        <div class="crop"><img src="/assets/img/shot-lobbying.jpg" alt="A minister in the lobbying window" style="transform:scale(1.9);transform-origin:27% 30%" loading="lazy"></div>
+        <div class="card__body"><div class="card__title"><span class="d card__num">05</span><h3 class="d">Lobby</h3></div><p>Meet ministers, fund parties, time the elections. Covert support is cheaper. Until somebody finds out.</p></div>
+      </article>
+      <article class="card">
+        <div class="crop"><img src="/assets/img/shot-newspaper.jpg" alt="A newspaper front page" style="transform:scale(1.5);transform-origin:55% 32%" loading="lazy"></div>
+        <div class="card__body"><div class="card__title"><span class="d card__num">06</span><h3 class="d">Live with it</h3></div><p>The world keeps a record of where your products ended up. Reputation, embargoes and headlines follow.</p></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="sec world wrap" id="world" aria-labelledby="world-title">
+  <div class="sec-head">
+    <div><div class="m sec-label">The world</div><h2 class="d h-xl" id="world-title">Every state<br>has a price.</h2></div>
+    <p class="lead">The map is generated for every new game. New states, new governments, new people in charge. Find out who is buying, who is about to be, and what it costs to stay friends.</p>
+  </div>
+  <div class="world__row">
+    <ol class="legend">
+      <li><span class="legend__num">1</span><div><h3 class="d">Generated states</h3><p>A new set of countries every game. Democracies, monarchies, theocracies, juntas.</p></div></li>
+      <li><span class="legend__num">2</span><div><h3 class="d">The people in charge</h3><p>Ministers with traits, stability and an opinion of you.</p></div></li>
+      <li><span class="legend__num">3</span><div><h3 class="d">Priority contracts</h3><p>Good relations open doors. And order books.</p></div></li>
+      <li><span class="legend__num">4</span><div><h3 class="d">Transparent or covert</h3><p>Fund a party in the open, or quietly. Quietly is cheaper. Until it isn’t.</p></div></li>
+      <li><span class="legend__num">5</span><div><h3 class="d">Factions and elections</h3><p>Governments fall. Doctrines change. Your best customer can be gone in one vote.</p></div></li>
+    </ol>
+    <div class="world__map">
+      <div class="world__shot">
+        <img src="/assets/img/shot-lobbying.jpg" alt="Lobbying window" width="1920" height="1080" loading="lazy">
+        <div aria-hidden="true">
+          <span class="ring" style="left:2.29%;top:30.56%;width:12.08%;height:41.85%"></span>
+          <span class="ring" style="left:15.62%;top:20.93%;width:24.27%;height:19.63%"></span>
+          <span class="ring" style="left:40.83%;top:24.07%;width:14.37%;height:3.33%"></span>
+          <span class="ring" style="left:40.83%;top:30.74%;width:14.37%;height:14.81%"></span>
+          <span class="ring" style="left:15.62%;top:52.96%;width:24.06%;height:16.48%"></span>
+          <span class="mark" style="left:2.29%;top:30.56%">1</span>
+          <span class="mark" style="left:15.62%;top:20.93%">2</span>
+          <span class="mark" style="left:55.21%;top:25.74%">3</span>
+          <span class="mark" style="left:55.21%;top:38.15%">4</span>
+          <span class="mark" style="left:39.69%;top:52.96%">5</span>
+        </div>
+      </div>
+      <div class="note">Analyst note: relation is cordial. Election in 14 months. Act accordingly.</div>
+    </div>
+  </div>
+</section>
+
+<section class="sec consequences" aria-labelledby="consequences-title">
+  <div class="wrap">
+    <div class="consequences__text">
+      <div class="m sec-label">Consequences</div>
+      <h2 class="d" id="consequences-title">Your actions<br>have <span class="accent">consequences.</span></h2>
+      <p class="quote">The game never comments.<br>Only you do.</p>
+      <p class="lead">Sell to both sides of a war. Arm a junta. Supply a democracy. The world remembers every delivery, and at the end of your run it hands you the full record.</p>
+    </div>
+    <div class="paper-wrap">
+      <div class="paper" role="img" aria-label="Newspaper front page: Where did the 200 tanks come from?">
+        <div class="paper__mast"><span class="paper__box">Price<br>50 cents</span><span class="paper__name">THE WORLD COURIER</span><span class="paper__box">Late<br>edition</span></div>
+        <div class="paper__dateline"><span>Vol. XXXIII</span><span>Monday, April 19, 1993</span><span>Four sections</span></div>
+        <div class="d paper__headline">Where did the 200 tanks come from?</div>
+        <div class="paper__sub">Supplier declines to comment. Shares rise four percent.</div>
+        <div class="paper__cols">
+          <div class="paper__col"><div class="d paper__kicker">Three states demand answers</div>Late Sunday two hundred heavy tanks appeared on the streets of the capital. Not one of them was built in the country. One private company has not answered the question.</div>
+          <figure><img src="/assets/img/general-halftone.jpg" alt="Halftone portrait of the general" width="840" height="1089" loading="lazy"><figcaption>The man behind the order.</figcaption></figure>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec offer-sec offer-sec--solo wrap" id="community" aria-label="Community">
+  <div class="m sec-label">Community</div>
+  <div class="offer-row">
+    <div class="community">
+      <div class="community__block">
+        <h2 class="d">Join the board<br>of directors.</h2>
+        <p class="lead">Dev updates, playtests and long arguments about calibers. The Discord is where Arms Empire gets built.</p>
+        <a class="btn btn--light btn--sm" href="https://discord.gg/JwE9DXx87T"><svg aria-hidden="true" width="20" height="20"><use href="#i-discord"/></svg> Join the Discord</a>
+      </div>
+      <div class="community__block">
+        <div class="m muted">Follow the company</div>
+        <div class="socials">
+          <a href="https://discord.gg/JwE9DXx87T">Discord<span aria-hidden="true">↗</span></a>
+          <a href="https://www.youtube.com/@CoalHarbourGames">YouTube<span aria-hidden="true">↗</span></a>
+          <a href="https://x.com/ArmsEmpireGame">X<span aria-hidden="true">↗</span></a>
+          <a href="https://bsky.app/profile/armsempire.bsky.social">Bluesky<span aria-hidden="true">↗</span></a>
+          <a href="https://www.instagram.com/armsempire/">Instagram<span aria-hidden="true">↗</span></a>
+          <a href="https://www.linkedin.com/showcase/arms-empire-profit-of-war/">LinkedIn<span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec studio" id="studio" aria-labelledby="studio-title">
+  <div class="wrap">
+    <img class="studio__logo" src="/assets/img/coal-harbour-games.jpg" alt="Coal Harbour Games logo" width="760" height="760" loading="lazy">
+    <div class="studio__text">
+      <div class="m sec-label">About us</div>
+      <h2 id="studio-title">Made by Coal Harbour Games</h2>
+      <p>A small independent studio from Czechia-Slovakia. We make strategy games with sharp edges and dark humor. Arms Empire is our first game, and for now our only one.</p>
+      <div class="team">
+        <div><strong>Marián Bullo</strong><span class="m">Game design and code</span></div>
+        <div><strong>Jakub Beczányi</strong><span class="m">Art and design</span></div>
+        <div><strong>Pavel Medek</strong><span class="m">Marketing</span></div>
+      </div>
+      <a class="studio__link" href="#" hidden>Visit the studio ↗</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer" id="press">
+  <div class="wrap">
+    <div class="footer__press" hidden>
+      <div><div class="m muted">Press and creators</div><h2 class="d">Press kit</h2><p>Fact sheet, logos, key art, screenshots and trailer in one download.</p></div>
+      <div class="footer__press-cta"><a class="btn btn--outline btn--sm" href="#">Request a key</a><a class="btn btn--light btn--sm" href="#">Open press kit →</a></div>
+    </div>
+    <div class="footer__cols">
+      <div class="d footer__brand">Arms<br>Empire<br><span class="accent">Profit of war</span></div>
+      <div class="footer__col"><div class="m">The game</div><a href="/#business">Features</a><a href="/#world">World</a><a href="/#pictures">Screenshots</a></div>
+      <div class="footer__col"><div class="m">Community</div><a href="https://discord.gg/JwE9DXx87T">Discord</a><a href="https://www.youtube.com/@CoalHarbourGames">YouTube</a></div>
+      <div class="footer__col"><div class="m">Company</div><a href="/#studio">Coal Harbour Games</a></div>
+    </div>
+    <div class="footer__legal">© 2026 Coal Harbour Games s.r.o. All rights reserved.</div>
+  </div>
+</footer>
 </body>
 </html>
