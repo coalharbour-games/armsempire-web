@@ -19,7 +19,8 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preload" href="/assets/fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/inter-tight-var.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/assets/css/style.css?v=7eb9ae89">
+<script src="/assets/js/main.js?v=f1b373c6" defer></script>
+<link rel="stylesheet" href="/assets/css/style.css?v=88c3aff9">
 </head>
 <body data-page="home">
 <!--@sprite-->
@@ -42,9 +43,9 @@
     <a href="/#studio" data-nav="studio">Studio</a>
   </div>
   <div class="nav__side">
-    <a class="nav__text" href="#" hidden>Press kit</a>
-    <a class="icon-btn" href="https://discord.gg/JwE9DXx87T" aria-label="Discord"><svg aria-hidden="true" width="20" height="20"><use href="#i-discord"/></svg></a>
-    <a class="icon-btn" href="#" aria-label="Steam" hidden><svg aria-hidden="true" width="20" height="20"><use href="#i-steam"/></svg></a>
+    <a class="nav__text" href="#" data-link="press_kit" data-needs="press_kit" hidden>Press kit</a>
+    <a class="icon-btn" href="https://discord.gg/JwE9DXx87T" data-link="discord" aria-label="Discord"><svg aria-hidden="true" width="20" height="20"><use href="#i-discord"/></svg></a>
+    <a class="icon-btn" href="#" data-link="steam" data-needs="steam" aria-label="Steam" hidden><svg aria-hidden="true" width="20" height="20"><use href="#i-steam"/></svg></a>
   </div>
 </nav>
 <!--/@nav-->
@@ -54,10 +55,10 @@
       <h1 class="d hero__title">You don't fight wars.<br><span class="accent">You supply them.</span></h1>
       <p class="hero__text">Build an arms corporation from one small ammunition factory. Design weapons, win government contracts, lobby the powerful, and read about it in tomorrow's paper.</p>
       <div class="hero__cta">
-        <a class="btn btn--accent" href="#" hidden><svg aria-hidden="true" width="20" height="20"><use href="#i-steam"/></svg> Wishlist on Steam</a>
-        <a class="btn btn--outline" href="https://discord.gg/JwE9DXx87T"><svg aria-hidden="true" width="20" height="20"><use href="#i-discord"/></svg> Join the Discord</a>
+        <a class="btn btn--accent" href="#" data-link="steam" data-needs="steam" hidden><svg aria-hidden="true" width="20" height="20"><use href="#i-steam"/></svg> Wishlist on Steam</a>
+        <a class="btn btn--outline" href="https://discord.gg/JwE9DXx87T" data-link="discord"><svg aria-hidden="true" width="20" height="20"><use href="#i-discord"/></svg> Join the Discord</a>
       </div>
-      <a class="play-link" href="#" hidden><span class="play-link__icon"><svg aria-hidden="true" width="12" height="14"><use href="#i-play"/></svg></span>Watch the trailer</a>
+      <a class="play-link" href="#" data-link="trailer" data-needs="trailer" hidden><span class="play-link__icon"><svg aria-hidden="true" width="12" height="14"><use href="#i-play"/></svg></span>Watch the trailer</a>
     </div>
   </div>
   <div class="facts">
@@ -75,9 +76,9 @@
 <section class="sec pictures wrap" id="pictures" aria-labelledby="pictures-title">
   <div class="sec-head">
     <div><div class="m sec-label">In pictures</div><h2 class="d h-xl" id="pictures-title">Inside the <span class="accent">company.</span></h2></div>
-    <p class="lead">Factories, blueprints, contracts and ministers.<span hidden> Ninety seconds of shareholder value.</span></p>
+    <p class="lead">Factories, blueprints, contracts and ministers.<span data-needs="trailer" hidden> Ninety seconds of shareholder value.</span></p>
   </div>
-  <a class="trailer" href="#" hidden>
+  <a class="trailer" href="#" data-link="trailer" data-needs="trailer" hidden>
     <img src="/assets/img/trailer-poster.jpg" alt="" width="1920" height="1080" loading="lazy">
     <span class="trailer__shade" aria-hidden="true"></span>
     <span class="trailer__play" aria-hidden="true"><svg width="34" height="40" style="margin-left:8px;color:#FFFFFF"><use href="#i-play"/></svg></span>
@@ -181,24 +182,42 @@
   </div>
 </section>
 
-<section class="sec offer-sec offer-sec--solo wrap" id="community" aria-label="Community">
-  <div class="m sec-label">Community</div>
+<section class="sec offer-sec wrap" id="community" aria-label="Community">
+  <div class="m sec-label"><span data-needs="steam" hidden>Final offer</span><span data-needs="!steam">Community</span></div>
   <div class="offer-row">
+    <div class="offer" data-needs="steam" hidden>
+      <div class="contract">
+        <div class="contract__title">CONTRACT OFFER</div>
+        <p>You have read this far. Put Arms Empire on your Steam wishlist. I will not ask twice.</p>
+        <p class="contract__terms">Order: <b>1 x Wishlist</b><br>Offer: <b>$0</b><br>Delivery: <b>Today</b></p>
+        <div class="contract__sign"><span>Signed, the General</span><span>Ref. AE/0001</span></div>
+        <div class="stamp" aria-hidden="true">PRIORITY</div>
+      </div>
+      <div class="offer__cta">
+        <a class="btn btn--accent btn--sm" href="#" data-link="steam"><svg aria-hidden="true" width="20" height="20"><use href="#i-steam"/></svg> Accept</a>
+        <a class="btn btn--outline btn--sm" href="https://discord.gg/JwE9DXx87T" data-link="discord"><svg aria-hidden="true" width="20" height="20"><use href="#i-discord"/></svg> Negotiate</a>
+        <button class="decline" type="button" data-decline>Decline</button>
+      </div>
+      <p class="decline-msg" role="status" aria-live="polite" data-decline-msg></p>
+      <div class="m offer__hint">Accept opens Steam. Negotiate opens our Discord.</div>
+    </div>
     <div class="community">
       <div class="community__block">
         <h2 class="d">Join the board<br>of directors.</h2>
         <p class="lead">Dev updates, playtests and long arguments about calibers. The Discord is where Arms Empire gets built.</p>
-        <a class="btn btn--light btn--sm" href="https://discord.gg/JwE9DXx87T"><svg aria-hidden="true" width="20" height="20"><use href="#i-discord"/></svg> Join the Discord</a>
+        <a class="btn btn--light btn--sm" href="https://discord.gg/JwE9DXx87T" data-link="discord"><svg aria-hidden="true" width="20" height="20"><use href="#i-discord"/></svg> Join the Discord</a>
       </div>
       <div class="community__block">
         <div class="m muted">Follow the company</div>
         <div class="socials">
-          <a href="https://discord.gg/JwE9DXx87T">Discord<span aria-hidden="true">↗</span></a>
-          <a href="https://www.youtube.com/@CoalHarbourGames">YouTube<span aria-hidden="true">↗</span></a>
-          <a href="https://x.com/ArmsEmpireGame">X<span aria-hidden="true">↗</span></a>
-          <a href="https://bsky.app/profile/armsempire.bsky.social">Bluesky<span aria-hidden="true">↗</span></a>
-          <a href="https://www.instagram.com/armsempire/">Instagram<span aria-hidden="true">↗</span></a>
-          <a href="https://www.linkedin.com/showcase/arms-empire-profit-of-war/">LinkedIn<span aria-hidden="true">↗</span></a>
+<!--@socials-->
+<a href="https://discord.gg/JwE9DXx87T">Discord<span aria-hidden="true">↗</span></a>
+<a href="https://www.youtube.com/@CoalHarbourGames">YouTube<span aria-hidden="true">↗</span></a>
+<a href="https://x.com/ArmsEmpireGame">X<span aria-hidden="true">↗</span></a>
+<a href="https://bsky.app/profile/armsempire.bsky.social">Bluesky<span aria-hidden="true">↗</span></a>
+<a href="https://www.instagram.com/armsempire/">Instagram<span aria-hidden="true">↗</span></a>
+<a href="https://www.linkedin.com/showcase/arms-empire-profit-of-war/">LinkedIn<span aria-hidden="true">↗</span></a>
+<!--/@socials-->
         </div>
       </div>
     </div>
@@ -217,7 +236,7 @@
         <div><strong>Jakub Beczányi</strong><span class="m">Art and design</span></div>
         <div><strong>Pavel Medek</strong><span class="m">Marketing</span></div>
       </div>
-      <a class="studio__link" href="#" hidden>Visit the studio ↗</a>
+      <a class="studio__link" href="#" data-link="studio" data-needs="studio" hidden>Visit the studio ↗</a>
     </div>
   </div>
 </section>
@@ -227,17 +246,17 @@
 <!--@footer-->
 <footer class="footer" id="press">
   <div class="wrap">
-    <div class="footer__press" hidden>
+    <div class="footer__press" data-needs="press_kit" hidden>
       <div><div class="m muted">Press and creators</div><h2 class="d">Press kit</h2><p>Fact sheet, logos, key art, screenshots and trailer in one download.</p></div>
-      <div class="footer__press-cta"><a class="btn btn--outline btn--sm" href="#">Request a key</a><a class="btn btn--light btn--sm" href="#">Open press kit →</a></div>
+      <div class="footer__press-cta"><a class="btn btn--outline btn--sm" href="#" data-link="press_key" data-needs="press_key" hidden>Request a key</a><a class="btn btn--light btn--sm" href="#" data-link="press_kit">Open press kit →</a></div>
     </div>
     <div class="footer__cols">
       <div class="d footer__brand">Arms<br>Empire<br><span class="accent">Profit of war</span></div>
-      <div class="footer__col"><div class="m">The game</div><a href="/#business">Features</a><a href="/#world">World</a><a href="/#pictures">Screenshots</a></div>
-      <div class="footer__col"><div class="m">Community</div><a href="https://discord.gg/JwE9DXx87T">Discord</a><a href="https://www.youtube.com/@CoalHarbourGames">YouTube</a></div>
-      <div class="footer__col"><div class="m">Company</div><a href="/#studio">Coal Harbour Games</a></div>
+      <div class="footer__col"><div class="m">The game</div><a href="/#business">Features</a><a href="/#world">World</a><a href="/#pictures">Screenshots</a><a href="#" data-link="press_kit" data-needs="press_kit" hidden>Press kit</a></div>
+      <div class="footer__col"><div class="m">Community</div><a href="https://discord.gg/JwE9DXx87T" data-link="discord">Discord</a><a href="#" data-link="steam" data-needs="steam" hidden>Steam</a><a href="https://www.youtube.com/@CoalHarbourGames" data-link="social:YouTube" data-needs="social:YouTube">YouTube</a></div>
+      <div class="footer__col"><div class="m">Company</div><a href="/#studio">Coal Harbour Games</a><a href="#" data-link="contact" data-needs="contact" hidden>Contact</a></div>
     </div>
-    <div class="footer__legal">© <span data-k="year">2026</span> Coal Harbour Games s.r.o. All rights reserved.</div>
+    <div class="footer__legal">© <span data-k="year">2026</span> Coal Harbour Games s.r.o. All rights reserved.<span data-needs="steam" hidden> Steam and the Steam logo are trademarks of Valve Corporation.</span></div>
   </div>
 </footer>
 <!--/@footer-->

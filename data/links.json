@@ -1,0 +1,27 @@
+{
+  "_guide": [
+    "Links used across the website. Change only the text between the quotes on the right.",
+    "An empty value (\"\") hides everything that needs that link; fill it in and the next build shows it.",
+    "Every link must start with https:// (or mailto: for an e-mail address).",
+    "steam: the Steam store page. Shows the Wishlist buttons, the Steam icon and the contract offer section.",
+    "trailer: the trailer on YouTube. Shows the trailer block and the 'Watch the trailer' links.",
+    "press_kit: the press kit (a page or a ZIP). press_key: where journalists request a key, e.g. mailto:press@coalharbour.games.",
+    "contact: the contact form on the studio website. studio: the studio website.",
+    "socials: the list under 'Follow the company', in this order. Add or remove whole { \"name\": ..., \"url\": ... } lines."
+  ],
+  "discord": "https://discord.gg/JwE9DXx87T",
+  "steam": "",
+  "trailer": "",
+  "press_kit": "",
+  "press_key": "",
+  "contact": "",
+  "studio": "",
+  "socials": [
+    { "name": "Discord", "url": "https://discord.gg/JwE9DXx87T" },
+    { "name": "YouTube", "url": "https://www.youtube.com/@CoalHarbourGames" },
+    { "name": "X", "url": "https://x.com/ArmsEmpireGame" },
+    { "name": "Bluesky", "url": "https://bsky.app/profile/armsempire.bsky.social" },
+    { "name": "Instagram", "url": "https://www.instagram.com/armsempire/" },
+    { "name": "LinkedIn", "url": "https://www.linkedin.com/showcase/arms-empire-profit-of-war/" }
+  ]
+}

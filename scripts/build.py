@@ -9,15 +9,17 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
-from aebuild import pages
+from aebuild import links, pages
 from aebuild.common import PUBLIC, ROOT, BuildError, write_if_changed
 
 
 def build():
+    site_links = links.load()
     changed = []
     for path in sorted(PUBLIC.rglob("*.html")):
         page = path.read_text(encoding="utf-8")
         page = pages.apply_partials(page)
+        page = links.apply(page, site_links)
         page = pages.finish(page)
         if write_if_changed(path, page):
             changed.append(path.relative_to(ROOT).as_posix())
