@@ -9,16 +9,22 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
-from aebuild import links, pages
-from aebuild.common import PUBLIC, ROOT, BuildError, write_if_changed
+from aebuild import gallery, links, pages
+from aebuild.common import PUBLIC, ROOT, BuildError, has_block, replace_block, write_if_changed
 
 
 def build():
     site_links = links.load()
+    blocks = {}
+    blocks.update(gallery.blocks(gallery.collect()))
+
     changed = []
     for path in sorted(PUBLIC.rglob("*.html")):
         page = path.read_text(encoding="utf-8")
         page = pages.apply_partials(page)
+        for name, content in blocks.items():
+            if has_block(page, name):
+                page = replace_block(page, name, content)
         page = links.apply(page, site_links)
         page = pages.finish(page)
         if write_if_changed(path, page):

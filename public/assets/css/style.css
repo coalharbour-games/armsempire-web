@@ -127,9 +127,9 @@ img { max-width: 100%; height: auto; }
 .trailer__caption .m { color: #D8D0C2; }
 .trailer__caption .d { font-size: 44px; }
 
-.shots { display: flex; gap: 20px; flex-wrap: wrap; }
-.shot { flex: 1 1 240px; margin: 0; }
-.shots--grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); }
+.shots { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.shots:has(> .shot:nth-child(4):last-child) { grid-template-columns: repeat(4, 1fr); }
+.shot { margin: 0; min-width: 0; }
 .shot a { display: block; cursor: zoom-in; }
 .shot img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; display: block; border: 1px solid var(--line); transition: filter .3s; }
 .shot a:hover img { filter: brightness(1.1); }
@@ -243,6 +243,17 @@ img { max-width: 100%; height: auto; }
 .footer__col { flex: 1 1 160px; display: flex; flex-direction: column; gap: 10px; font-size: 15px; }
 .footer__col .m { color: var(--muted-2); margin-bottom: 6px; }
 .footer__legal { border-top: 1px solid var(--line); padding: 22px 0 30px; color: var(--muted-2); font-size: 13px; }
+
+/* Lightbox */
+.lightbox { position: fixed; inset: 0; z-index: 90; background: rgba(7,6,5,.94); display: flex; align-items: center; justify-content: center; padding: 60px 90px; }
+.lightbox figure { margin: 0; max-width: 100%; max-height: 100%; display: flex; flex-direction: column; align-items: center; }
+.lightbox img { max-width: 100%; max-height: calc(100vh - 160px); object-fit: contain; border: 1px solid var(--line); }
+.lightbox figcaption { color: var(--muted); margin-top: 14px; }
+.lightbox__btn { position: absolute; width: 52px; height: 52px; border: 1px solid rgba(236,229,216,.35); background: rgba(12,11,10,.6); color: var(--text); display: grid; place-items: center; cursor: pointer; font: 600 22px 'IBM Plex Mono', monospace; }
+.lightbox__btn:hover { border-color: var(--text); }
+.lightbox__close { top: 20px; right: 20px; }
+.lightbox__prev { left: 20px; top: 50%; transform: translateY(-50%); }
+.lightbox__next { right: 20px; top: 50%; transform: translateY(-50%); }
 
 /* Subpages */
 .page { padding-top: 90px; padding-bottom: 120px; }

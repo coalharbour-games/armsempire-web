@@ -3,3 +3,4 @@ __pycache__/
 *.patch
 node_modules/
 .wrangler/
+public/media/
