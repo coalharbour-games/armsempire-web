@@ -6,11 +6,13 @@ In the HTML:
   data-needs="steam"          hidden while the link is empty
   data-needs="!steam"         hidden once the link is filled in
   data-needs="steam trailer"  hidden unless all of them hold
+  data-share                  the build puts share_text into its data-text
 """
 
 from .common import BuildError, esc, get_attr, read_json, replace_block, rewrite_tags, set_attr
 
 SINGLE = ("discord", "steam", "trailer", "press_kit", "press_key", "contact", "studio")
+TEXTS = ("share_text",)
 
 
 def load():
@@ -20,6 +22,9 @@ def load():
         if not isinstance(value, str):
             raise BuildError(f'data/links.json: "{key}" must be text, use "" when there is no link')
         _check_url(key, value)
+    for key in TEXTS:
+        if not isinstance(links.get(key), str):
+            raise BuildError(f'data/links.json: "{key}" must be text, use "" when there is none')
     socials = links.get("socials")
     if not isinstance(socials, list):
         raise BuildError('data/links.json: "socials" must be a list')
@@ -68,7 +73,11 @@ def apply(page, links, extra=None):
     def toggle(attrs):
         set_attr(attrs, "hidden", None if _flag_holds(links, get_attr(attrs, "data-needs"), extra) else True)
 
+    def share(attrs):
+        set_attr(attrs, "data-text", esc(links["share_text"]))
+
     page = rewrite_tags(page, "data-link", fill)
+    page = rewrite_tags(page, "data-share", share)
     page = rewrite_tags(page, "data-needs", toggle)
     if "<!--@socials-->" in page:
         items = "\n".join(

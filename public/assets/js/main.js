@@ -193,7 +193,22 @@
     closeBtn.focus();
   }
 
+  function initShare() {
+    var button = document.querySelector('[data-share]');
+    if (!button) return;
+    button.addEventListener('click', function () {
+      var url = 'https://armsempiregame.com/';
+      var text = button.getAttribute('data-text') || '';
+      if (navigator.share) {
+        navigator.share({ title: document.title, text: text, url: url }).catch(function () {});
+      } else {
+        window.open('https://wa.me/?text=' + encodeURIComponent(text + ' ' + url), '_blank', 'noopener');
+      }
+    });
+  }
+
   initDecline();
   initLightbox();
   initOverlay();
+  initShare();
 })();

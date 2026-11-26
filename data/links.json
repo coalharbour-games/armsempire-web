@@ -7,7 +7,8 @@
     "trailer: the trailer on YouTube. Shows the trailer block and the 'Watch the trailer' links.",
     "press_kit: the press kit (a page or a ZIP). press_key: where journalists request a key, e.g. mailto:press@coalharbour.games.",
     "contact: the contact form on the studio website. studio: the studio website.",
-    "socials: the list under 'Follow the company', in this order. Add or remove whole { \"name\": ..., \"url\": ... } lines."
+    "socials: the list under 'Follow the company', in this order. Add or remove whole { \"name\": ..., \"url\": ... } lines.",
+    "share_text: the ready-made message of the Share button (the link to armsempiregame.com is added after it). Empty hides the button."
   ],
   "discord": "https://discord.gg/JwE9DXx87T",
   "steam": "",
@@ -16,6 +17,7 @@
   "press_key": "",
   "contact": "",
   "studio": "",
+  "share_text": "",
   "socials": [
     { "name": "Discord", "url": "https://discord.gg/JwE9DXx87T" },
     { "name": "YouTube", "url": "https://www.youtube.com/@CoalHarbourGames" },
