@@ -7,6 +7,7 @@ import json
 import re
 from pathlib import Path
 
+SITE = "https://armsempiregame.com"
 ROOT = Path(__file__).resolve().parents[2]
 PUBLIC = ROOT / "public"
 DATA = ROOT / "data"

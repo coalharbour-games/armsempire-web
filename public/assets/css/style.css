@@ -190,6 +190,49 @@ img { max-width: 100%; height: auto; }
 .paper figure img { width: 100%; display: block; border: 1px solid #1D1B18; }
 .paper figcaption { font-style: italic; font-size: 11px; text-align: center; margin-top: 4px; }
 
+/* Devlog */
+.devlog-home { border-bottom: 1px solid rgba(236,229,216,.1); }
+.devlog-home .wrap { padding-top: 120px; padding-bottom: 110px; }
+.posts { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 20px; }
+.post-card { background: var(--card); border: 1px solid rgba(236,229,216,.09); display: flex; flex-direction: column; }
+.post-card:hover { color: var(--text); }
+.post-card:hover .crop img { filter: brightness(1.08); }
+.post-card .crop--empty { display: grid; place-items: center; }
+.post-card .crop--empty span { font-size: 64px; color: rgba(236,229,216,.08); }
+.post-card__body { padding: 24px 26px 30px; display: flex; flex-direction: column; gap: 12px; }
+.post-card__date { color: var(--muted); }
+.post-card h3 { font-size: 34px; font-stretch: 75%; }
+.post-card p { margin: 0; font-size: 16px; line-height: 1.55; color: var(--text-2); }
+.post-card__more { margin-top: auto; padding-top: 8px; color: var(--accent); font-weight: 700; font-size: 15px; }
+.devlog-more { margin-top: 28px; }
+.empty { color: var(--text-2); font-family: 'Courier Prime', monospace; font-size: 20px; }
+
+
+.article { max-width: 820px; margin: 0 auto; }
+.article__meta { color: var(--muted); }
+.article h1 { font-size: clamp(44px, 6vw, 88px); margin: 18px 0 20px; }
+.article__summary { font-size: 20px; line-height: 1.55; color: var(--text-2); margin: 0 0 40px; }
+.article__cover { margin: 0 0 48px; }
+.article__cover img { width: 100%; display: block; border: 1px solid var(--line); }
+.prose { font-size: 18px; line-height: 1.7; color: #DDD5C7; }
+.prose h2, .prose h3 { font-family: 'Archivo', sans-serif; font-stretch: 62%; font-weight: 900; text-transform: uppercase; line-height: .95; color: var(--text); margin: 56px 0 16px; }
+.prose h2 { font-size: 44px; }
+.prose h3 { font-size: 32px; font-stretch: 75%; }
+.prose a { color: var(--text); text-decoration: underline; text-decoration-color: var(--accent); text-underline-offset: 3px; }
+.prose img { display: block; width: 100%; height: auto; border: 1px solid var(--line); }
+.prose figure { margin: 36px 0; }
+.prose figcaption { font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); margin-top: 10px; }
+.prose blockquote { margin: 32px 0; padding: 18px 24px; background: var(--paper); color: var(--ink); font-family: 'Courier Prime', monospace; font-size: 19px; line-height: 1.5; transform: rotate(-.6deg); box-shadow: 0 18px 36px rgba(0,0,0,.45); }
+.prose blockquote p { margin: 0; }
+.prose code { font-family: 'IBM Plex Mono', monospace; font-size: .88em; background: var(--card); padding: 2px 6px; }
+.prose hr { border: 0; border-top: 1px solid var(--line); margin: 48px 0; }
+.prose table { border-collapse: collapse; width: 100%; font-size: 16px; }
+.prose th, .prose td { border-bottom: 1px solid var(--line); padding: 10px 8px; text-align: left; }
+.attachments { margin-top: 48px; border-top: 1px solid rgba(236,229,216,.3); padding-top: 22px; }
+.attachments ul { list-style: none; margin: 10px 0 0; padding: 0; }
+.attachments a { display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid rgba(236,229,216,.12); font-weight: 600; }
+.back-link { display: inline-block; margin-top: 56px; color: var(--text-2); font-weight: 600; }
+
 /* Offer + community */
 .offer-sec { padding-top: 130px; padding-bottom: 120px; }
 .offer-sec .sec-label { margin-bottom: 44px; }

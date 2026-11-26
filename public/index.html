@@ -20,7 +20,7 @@
 <link rel="preload" href="/assets/fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/inter-tight-var.woff2" as="font" type="font/woff2" crossorigin>
 <script src="/assets/js/main.js?v=29386f39" defer></script>
-<link rel="stylesheet" href="/assets/css/style.css?v=fc74bedb">
+<link rel="stylesheet" href="/assets/css/style.css?v=5550f2fe">
 </head>
 <body data-page="home">
 <!--@sprite-->
@@ -40,6 +40,7 @@
     <a href="/#pictures" data-nav="pictures">Screenshots</a>
     <a href="/#business" data-nav="business">Features</a>
     <a href="/#world" data-nav="world">World</a>
+    <a href="/devlog/" data-nav="devlog" data-needs="devlog" hidden>Devlog</a>
     <a href="/#studio" data-nav="studio">Studio</a>
   </div>
   <div class="nav__side">
@@ -186,6 +187,20 @@
   </div>
 </section>
 
+<section class="sec devlog-home" id="devlog" aria-labelledby="devlog-title" data-needs="devlog" hidden>
+  <div class="wrap">
+    <div class="sec-head">
+      <div><div class="m sec-label">Devlog</div><h2 class="d h-xl" id="devlog-title">Dispatches from <span class="accent">headquarters.</span></h2></div>
+      <p class="lead">What we built, what we broke, and what the ministry should not hear about yet.</p>
+    </div>
+    <div class="posts">
+<!--@devlog-home-->
+<!--/@devlog-home-->
+    </div>
+    <p class="devlog-more"><a class="btn btn--outline btn--sm" href="/devlog/">All dispatches →</a></p>
+  </div>
+</section>
+
 <section class="sec offer-sec wrap" id="community" aria-label="Community">
   <div class="m sec-label"><span data-needs="steam" hidden>Final offer</span><span data-needs="!steam">Community</span></div>
   <div class="offer-row">
@@ -256,7 +271,7 @@
     </div>
     <div class="footer__cols">
       <div class="d footer__brand">Arms<br>Empire<br><span class="accent">Profit of war</span></div>
-      <div class="footer__col"><div class="m">The game</div><a href="/#business">Features</a><a href="/#world">World</a><a href="/#pictures">Screenshots</a><a href="#" data-link="press_kit" data-needs="press_kit" hidden>Press kit</a></div>
+      <div class="footer__col"><div class="m">The game</div><a href="/#business">Features</a><a href="/#world">World</a><a href="/#pictures">Screenshots</a><a href="/devlog/" data-needs="devlog" hidden>Devlog</a><a href="#" data-link="press_kit" data-needs="press_kit" hidden>Press kit</a></div>
       <div class="footer__col"><div class="m">Community</div><a href="https://discord.gg/JwE9DXx87T" data-link="discord">Discord</a><a href="#" data-link="steam" data-needs="steam" hidden>Steam</a><a href="https://www.youtube.com/@CoalHarbourGames" data-link="social:YouTube" data-needs="social:YouTube">YouTube</a></div>
       <div class="footer__col"><div class="m">Company</div><a href="/#studio">Coal Harbour Games</a><a href="#" data-link="contact" data-needs="contact" hidden>Contact</a></div>
     </div>
