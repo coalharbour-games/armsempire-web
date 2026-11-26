@@ -9,7 +9,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
-from aebuild import devlog, gallery, links, pages
+from aebuild import devlog, gallery, links, overlay, pages
 from aebuild.common import PUBLIC, ROOT, BuildError, has_block, replace_block, write_if_changed
 
 
@@ -19,6 +19,7 @@ def build():
     blocks.update(gallery.blocks(gallery.collect()))
     articles, devlog_blocks, has_devlog = devlog.build()
     blocks.update(devlog_blocks)
+    blocks.update(overlay.build())
     flags = {"devlog": has_devlog}
 
     sources = {path: path.read_text(encoding="utf-8") for path in sorted(PUBLIC.rglob("*.html")) if path not in articles}

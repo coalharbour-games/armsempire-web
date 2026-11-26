@@ -1,0 +1,11 @@
+{
+  "_guide": [
+    "Announcements shown as a pop-up on the homepage, once per visit, between 'from' and 'to' (both days included, YYYY-MM-DD).",
+    "Required: id (unique, e.g. steam-page-2026), from, to, title.",
+    "Optional: kicker (small line above the title), text (an empty line between paragraphs: \\n\\n), image, image_alt, button and link (both or neither).",
+    "image: 16:9, 1200 x 675 px, JPG up to 250 KB, keep the top right corner free for the close button. Put it in public/assets/img/overlay/ and write it as /assets/img/overlay/name.jpg.",
+    "When several announcements are active, the first one in the list is shown.",
+    "Example: { \"id\": \"steam-page\", \"from\": \"2026-12-01\", \"to\": \"2026-12-14\", \"kicker\": \"Now on Steam\", \"title\": \"The board has approved a store page.\", \"text\": \"Add Arms Empire to your wishlist.\\n\\nIt costs nothing. For now.\", \"button\": \"Open Steam\", \"link\": \"https://store.steampowered.com/\" }"
+  ],
+  "items": []
+}

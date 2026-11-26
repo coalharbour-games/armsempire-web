@@ -298,6 +298,18 @@ img { max-width: 100%; height: auto; }
 .lightbox__prev { left: 20px; top: 50%; transform: translateY(-50%); }
 .lightbox__next { right: 20px; top: 50%; transform: translateY(-50%); }
 
+/* Overlay */
+.overlay { position: fixed; inset: 0; z-index: 95; background: rgba(7,6,5,.86); display: flex; align-items: center; justify-content: center; padding: 40px 24px; overflow-y: auto; }
+.overlay__card { position: relative; width: min(640px, 100%); background: var(--paper); color: var(--ink); box-shadow: 0 50px 90px rgba(0,0,0,.7); transform: rotate(-1deg); margin: auto; }
+.overlay__img { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; }
+.overlay__body { padding: 30px 36px 34px; font-family: 'Courier Prime', monospace; }
+.overlay__kicker { color: var(--accent); font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; }
+.overlay__title { font-size: clamp(36px, 5vw, 56px); margin: 10px 0 0; color: var(--ink); }
+.overlay__text p { font-size: 19px; line-height: 1.45; margin: 18px 0 0; }
+.overlay__cta { margin-top: 26px; font-family: 'Inter Tight', sans-serif; }
+.overlay__close { position: absolute; top: 12px; right: 12px; width: 44px; height: 44px; border: 0; background: rgba(12,11,10,.78); color: var(--text); cursor: pointer; font: 600 22px 'IBM Plex Mono', monospace; display: grid; place-items: center; }
+.overlay__close:hover { background: var(--accent); }
+
 /* Subpages */
 .page { padding-top: 90px; padding-bottom: 120px; }
 .page h1 { font-size: clamp(48px, 7vw, 112px); margin: 18px 0 44px; }

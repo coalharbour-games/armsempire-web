@@ -91,6 +91,109 @@
     });
   }
 
+  function localDate() {
+    var d = new Date();
+    var pad = function (n) { return (n < 10 ? '0' : '') + n; };
+    return d.getFullYear() + '-' + pad(d.getMonth() + 1) + '-' + pad(d.getDate());
+  }
+
+  function seen(key, mark) {
+    try {
+      if (mark) sessionStorage.setItem(key, '1');
+      return sessionStorage.getItem(key) === '1';
+    } catch (e) {
+      return false;
+    }
+  }
+
+  function initOverlay() {
+    var source = document.getElementById('overlay-data');
+    if (!source) return;
+    var items;
+    try { items = JSON.parse(source.textContent); } catch (e) { return; }
+    var today = localDate();
+    var item = items.filter(function (i) { return i.from <= today && today <= i.to; })[0];
+    if (!item) return;
+    var key = 'overlay-' + item.id;
+    if (seen(key)) return;
+    seen(key, true);
+
+    var overlay = document.createElement('div');
+    overlay.className = 'overlay';
+    overlay.setAttribute('role', 'dialog');
+    overlay.setAttribute('aria-modal', 'true');
+    overlay.setAttribute('aria-labelledby', 'overlay-title');
+    var card = document.createElement('div');
+    card.className = 'overlay__card';
+    overlay.appendChild(card);
+
+    if (item.image) {
+      var img = document.createElement('img');
+      img.className = 'overlay__img';
+      img.src = item.image;
+      img.alt = item.image_alt || '';
+      img.width = 1200;
+      img.height = 675;
+      card.appendChild(img);
+    }
+    var body = document.createElement('div');
+    body.className = 'overlay__body';
+    card.appendChild(body);
+    if (item.kicker) {
+      var kicker = document.createElement('div');
+      kicker.className = 'overlay__kicker';
+      kicker.textContent = item.kicker;
+      body.appendChild(kicker);
+    }
+    var title = document.createElement('h2');
+    title.className = 'd overlay__title';
+    title.id = 'overlay-title';
+    title.textContent = item.title;
+    body.appendChild(title);
+    if (item.text) {
+      var text = document.createElement('div');
+      text.className = 'overlay__text';
+      item.text.split(/\n\s*\n/).forEach(function (para) {
+        var p = document.createElement('p');
+        p.textContent = para.trim();
+        text.appendChild(p);
+      });
+      body.appendChild(text);
+    }
+    if (item.button && item.link) {
+      var cta = document.createElement('a');
+      cta.className = 'btn btn--accent btn--sm overlay__cta';
+      cta.href = item.link;
+      cta.textContent = item.button;
+      body.appendChild(cta);
+    }
+    var closeBtn = document.createElement('button');
+    closeBtn.type = 'button';
+    closeBtn.className = 'overlay__close';
+    closeBtn.setAttribute('aria-label', 'Close');
+    closeBtn.textContent = '\u00d7';
+    card.appendChild(closeBtn);
+
+    var opener = document.activeElement;
+    function close() {
+      overlay.remove();
+      document.body.classList.remove('scroll-lock');
+      document.removeEventListener('keydown', onKey);
+      if (opener && opener.focus) opener.focus();
+    }
+    function onKey(e) {
+      if (e.key === 'Escape') close();
+      else if (e.key === 'Tab') trapFocus(overlay, e);
+    }
+    closeBtn.addEventListener('click', close);
+    overlay.addEventListener('click', function (e) { if (e.target === overlay) close(); });
+    document.addEventListener('keydown', onKey);
+    document.body.appendChild(overlay);
+    document.body.classList.add('scroll-lock');
+    closeBtn.focus();
+  }
+
   initDecline();
   initLightbox();
+  initOverlay();
 })();
