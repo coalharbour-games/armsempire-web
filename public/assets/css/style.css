@@ -91,8 +91,9 @@ img { max-width: 100%; height: auto; }
 .nav__side .nav__text { margin-right: 10px; color: var(--text-2); }
 .icon-btn { width: 40px; height: 40px; border: 1px solid rgba(236, 229, 216, .28); display: grid; place-items: center; }
 .page-header { border-bottom: 1px solid var(--line); }
-.nav__home { display: inline-flex; align-items: center; margin-right: 10px; }
+.nav__links .nav__home { display: inline-flex; align-items: center; padding-bottom: 0; border-bottom: 0; margin: -8px 4px -8px 0; }
 .nav__home img { height: 34px; width: auto; display: block; }
+[data-page="home"] .nav__home { display: none; }
 
 /* Hero */
 .hero { position: relative; min-height: 880px; overflow: hidden; display: flex; flex-direction: column; }
