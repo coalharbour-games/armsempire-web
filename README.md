@@ -4,8 +4,10 @@ The website of **Arms Empire: Profit of War**. Plain HTML, CSS and JavaScript,
 no framework. A small Python build fills in the parts that change (links,
 screenshots, devlog, announcements), and Cloudflare serves the result.
 
-- **Desktop only for now.** The layout follows the designer's 1440 px artboard; the
-  mobile layout is still to come from the designer.
+- **Desktop, tablet and phone.** The desktop layout follows the designer's 1440 px
+  artboard; tablet (up to 1080 px) and phone (up to 760 px) layouts are derived from it
+  at the end of `public/assets/css/style.css`. On phones the menu folds into a button
+  and a bar with Discord (and Wishlist, once Steam is in `links.json`) stays at the bottom.
 - **No cookies, no analytics, nothing loaded from other servers.** Keep it that way,
   or update `public/privacy/index.html` first.
 

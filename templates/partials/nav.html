@@ -1,16 +1,18 @@
 <nav class="nav" aria-label="Main">
-  <div class="nav__links">
-    <a class="nav__home" href="/" aria-label="Arms Empire home"><img src="/assets/img/logo.webp" alt="" width="56" height="34"></a>
+  <a class="nav__home" href="/" aria-label="Arms Empire home"><img src="/assets/img/logo.webp" alt="" width="56" height="34"></a>
+  <div class="nav__links" id="site-menu">
     <a href="/#game" data-nav="game">The Game</a>
     <a href="/#pictures" data-nav="pictures">Screenshots</a>
     <a href="/#business" data-nav="business">Features</a>
     <a href="/#world" data-nav="world">World</a>
     <a href="/devlog/" data-nav="devlog" data-needs="devlog" hidden>Devlog</a>
     <a href="/#studio" data-nav="studio">Studio</a>
+    <a class="nav__menu-only" href="#" data-link="press_kit" data-needs="press_kit" hidden>Press kit</a>
   </div>
   <div class="nav__side">
     <a class="nav__text" href="#" data-link="press_kit" data-needs="press_kit" hidden>Press kit</a>
     <a class="icon-btn" href="https://discord.gg/JwE9DXx87T" data-link="discord" aria-label="Discord"><svg aria-hidden="true" width="20" height="20"><use href="#i-discord"/></svg></a>
     <a class="icon-btn" href="#" data-link="steam" data-needs="steam" aria-label="Steam" hidden><svg aria-hidden="true" width="20" height="20"><use href="#i-steam"/></svg></a>
+    <button class="icon-btn nav__toggle" type="button" aria-controls="site-menu" aria-expanded="false" aria-label="Menu"><span class="nav__bars" aria-hidden="true"></span></button>
   </div>
 </nav>

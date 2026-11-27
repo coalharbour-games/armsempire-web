@@ -207,6 +207,28 @@
     });
   }
 
+  function initMenu() {
+    var nav = document.querySelector('.nav');
+    var toggle = nav && nav.querySelector('.nav__toggle');
+    if (!toggle) return;
+    function set(open) {
+      nav.classList.toggle('is-open', open);
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      toggle.setAttribute('aria-label', open ? 'Close menu' : 'Menu');
+    }
+    toggle.addEventListener('click', function () { set(!nav.classList.contains('is-open')); });
+    nav.querySelector('.nav__links').addEventListener('click', function (e) {
+      if (e.target.closest('a')) set(false);
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && nav.classList.contains('is-open')) { set(false); toggle.focus(); }
+    });
+    document.addEventListener('click', function (e) {
+      if (nav.classList.contains('is-open') && !nav.contains(e.target)) set(false);
+    });
+  }
+
+  initMenu();
   initDecline();
   initLightbox();
   initOverlay();
